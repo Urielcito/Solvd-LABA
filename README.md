@@ -1,5 +1,5 @@
 # Solvd-LABA
-Readme para que el profe se deje de joder
+Readme para que el profe se deje de joder (es chiste)
 
 ```
 class SelectionSort {
