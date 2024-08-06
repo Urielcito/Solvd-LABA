@@ -1,7 +1,3 @@
-# Solvd-LABA
-Readme para que el profe se deje de joder
-
-```
 class SelectionSort {
     void sort(int arr[])
     {
@@ -41,6 +37,5 @@ class SelectionSort {
         elSorting.printArray(arr);
     }
 }
-```
 
 
