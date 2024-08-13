@@ -1,18 +1,18 @@
 import java.util.Random;
 
-public class Cell {
-    private int health;
-    private int energyPerOperation;
-    private double energy;
-    private double storedEnergy;
-    private double oxygen;
+public abstract class Cell {
+    protected int health;
+    protected int energyPerOperation;
+    protected double energy;
+    protected double storedEnergy;
+    protected double oxygen;
 
-    private boolean alive;
+    protected boolean alive;
 
-    private double maxEnergy = 100;
-    private double maxOxygen = 100;
+    protected double maxEnergy = 100;
+    protected double maxOxygen = 100;
 
-    private double storageCapacity = 1000;
+    protected double storageCapacity = 1000;
 
     public int getHealth() {
         return health;
@@ -80,11 +80,9 @@ public class Cell {
         this.alive = alive;
     }
 
-    public void showEverything(){
-        System.out.println("Health: " + this.health + "\nEnergy: " + this.energy + "\nStored energy: " + storedEnergy + "\nOxygen: " + this.oxygen + "\nAlive: " + alive);
-    }
+    public abstract void showEverything();
 
-    private void Kill() {
+    protected void Kill() {
         this.alive = false;
         this.energyPerOperation = 0;
         this.oxygen = 0;
@@ -92,7 +90,7 @@ public class Cell {
         this.storedEnergy = 0;
     }
 
-    private void Breathe() {
+    protected void Breathe() {
         oxygen = 100;
     }
 
@@ -103,23 +101,23 @@ public class Cell {
         }
     }
 
-    private void spendOxygen(double energyUsed) {
+    protected void spendOxygen(double energyUsed) {
         oxygen -= energyUsed / 2;
         if (oxygen < (energyPerOperation/2))
             Breathe();
     }
-    private void spendEnergy(double energyUsed){
+    protected void spendEnergy(double energyUsed){
         energy -= energyUsed;
         if(energy < 0)
             energy = 0;
     }
-    private void spendStoredEnergy(double energyUsed){
+    protected void spendStoredEnergy(double energyUsed){
         storedEnergy -= energyUsed;
         if(storedEnergy < 0)
             storedEnergy = 0;
     }
 
-    public boolean Move() {
+    protected boolean Move() {
         double initialEnergy = energy;
         double initialStored = storedEnergy;
         if(health != 0)
