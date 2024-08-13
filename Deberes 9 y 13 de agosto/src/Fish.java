@@ -22,6 +22,7 @@ public class Fish extends Animal{
     public Fish() {
         this.speciesName = "Fish";
         this.hasFur = false;
+        this.type = "aquatic";
         Random r = new Random();
         this.weight = r.nextDouble(1,10);
         this.eggsLayed = 0;
@@ -30,6 +31,7 @@ public class Fish extends Animal{
     public Fish(double weight) {
         this.speciesName = "Fish";
         this.hasFur = false;
+        this.type = "aquatic";
         Random r = new Random();
         this.weight = weight;
         this.eggsLayed = 0;
@@ -41,6 +43,9 @@ public class Fish extends Animal{
         this.eggsLayed += r.nextLong(25, 25+amount);
     }
 
+    public void makeSound(){
+        System.out.println("Glu Glu Glu");
+    }
     public void showEverything(){
         System.out.println("Eggs layed: "+this.eggsLayed+" eggs.\nWeight: "+this.weight+" kg.");
     }

@@ -112,7 +112,7 @@ public abstract class Animal extends Cell{
     }
 
 
-
+    public abstract void makeSound();
     public void showEverything(){
         System.out.println("Alive: "+this.alive+"\nSpecies: " + this.speciesName + "\nHas fur: " + this.hasFur + "\nType: " + this.type);
     }

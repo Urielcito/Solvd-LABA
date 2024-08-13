@@ -56,6 +56,13 @@ public class Person extends Human{
         return child;
     }
 
+    public void Speak(){
+        Think();
+        makeSound();
+    }
+    public void makeSound(){
+        System.out.println("*says something*");
+    }
     public void showEverything(){
         System.out.println("\nName: "+this.name+"\nAge: "+this.age+"\nBirthday: "+this.birthday+"\nEthnicity: "+this.ethnicity+"\nIntelligence: "+this.intelligence+"\nGender: "+this.gender+"\n");
     }
