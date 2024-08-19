@@ -46,6 +46,8 @@ public class Fish extends Animal{
     public void makeSound(){
         System.out.println("Glu Glu Glu");
     }
+
+    @Override
     public void showEverything(){
         System.out.println("Eggs layed: "+this.eggsLayed+" eggs.\nWeight: "+this.weight+" kg.");
     }

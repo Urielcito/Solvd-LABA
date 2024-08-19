@@ -51,9 +51,31 @@ public class GuineaPig extends Animal{
                 break;
         }
     }
+
+    @Override
     public void showEverything(){
 
     }
 
+    @Override
+    public String toString() {
+        return "Guinea Pig {" +
+                "name='" + name + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this.name == ((GuineaPig) o).getName())
+            return true;
+        else
+            return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int code = Integer.parseInt(this.getRace()) + Integer.parseInt(this.getName()); // transforms both his race string and name string to create a code adding both values together.
+        return code;
+    }
 
 }

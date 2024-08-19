@@ -33,12 +33,15 @@ public class Plant extends Cell{
         this.oxygen = 0;
         Breathe();
     }
+
+    @Override
     protected boolean Move(){
         System.out.println("The plant can't move, instead it will release oxygen.");
         releaseOxygen();
         return false;
     }
 
+    @Override
     public int searchForFood(){
         int food = 0;
         if(receivesSunlight && isWatered)
@@ -52,6 +55,8 @@ public class Plant extends Cell{
     public void Water(){
         this.isWatered=true;
     }
+
+    @Override
     public void showEverything(){
         System.out.println("Receives sunlight: " +this.receivesSunlight+"\nIs watered: "+this.isWatered);
     }

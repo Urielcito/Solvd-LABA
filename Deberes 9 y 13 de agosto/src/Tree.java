@@ -51,6 +51,7 @@ public class Tree extends Plant{
             this.isWatered = true;
         return this.isWatered;
     }
+    @Override
     public int searchForFood(){
         int food = 0;
         if(isWatered == false)
@@ -65,6 +66,7 @@ public class Tree extends Plant{
         return food;
     }
 
+    @Override
     public void showEverything(){
         System.out.println("Environment humidity: " +this.humidity+"\nHeight: "+this.height);
     }

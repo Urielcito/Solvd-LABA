@@ -42,10 +42,14 @@ public class Mushroom extends Cell{
         double CO2 = oxygen;
         return CO2;
     }
+
+    @Override
     protected void Breathe(){
         oxygen = 100;
         releaseCO2(oxygen);
     }
+
+    @Override
     public void showEverything(){
         System.out.println("Quantity of Mushrooms in community: " + this.count + "\nArea covered: "+this.areaCovered +" square meters.\n");
     }

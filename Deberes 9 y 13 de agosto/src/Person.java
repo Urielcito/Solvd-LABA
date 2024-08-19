@@ -1,4 +1,5 @@
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.Random;
 
 public class Person extends Human{
@@ -63,7 +64,32 @@ public class Person extends Human{
     public void makeSound(){
         System.out.println("*says something*");
     }
+
+    @Override
     public void showEverything(){
         System.out.println("\nName: "+this.name+"\nAge: "+this.age+"\nBirthday: "+this.birthday+"\nEthnicity: "+this.ethnicity+"\nIntelligence: "+this.intelligence+"\nGender: "+this.gender+"\n");
+    }
+
+    //Overriding Object class methods:
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this.name == ((Person) o).getName())
+            return true;
+        else
+            return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int code = this.getAge() + this.getIntelligence();
+        return code;
     }
 }

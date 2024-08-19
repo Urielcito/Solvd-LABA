@@ -44,7 +44,29 @@ public class Cat extends Animal{
         System.out.println(this.meow);
     }
 
+    @Override
     public void showEverything(){
         System.out.println("\nName: " + this.name + "Race: "+this.race+"\nMeow style: "+this.meow+"\n");
+    }
+
+    @Override
+    public String toString() {
+        return "Cat{" +
+                "name='" + name + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this.name == ((Cat) o).getName())
+            return true;
+        else
+            return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int code = Integer.parseInt(this.getMeow()) + Integer.parseInt(this.getName()); // transforms both his meow string and name string to create a code adding both values together.
+        return code;
     }
 }

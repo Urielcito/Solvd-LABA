@@ -95,6 +95,7 @@ public abstract class Human extends Animal{
         return solved;
     }
 
+    @Override
     public int searchForFood() {
         int food = 0;
         Random r = new Random();
@@ -113,6 +114,7 @@ public abstract class Human extends Animal{
         return food;
     }
 
+    @Override
     public void showEverything(){
         System.out.println("Name: ");
     }
