@@ -10,6 +10,7 @@
 	- Added static block in Animal to initialize animalCount = 0.
 	- Added static method in Animal to return animalCount.
 	- Improved the main method in Main to better reflect each requested feature.
+	- Changed folder name to better fit the format of future homework.
 ```
 
 
