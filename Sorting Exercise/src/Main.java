@@ -1,5 +1,5 @@
-class SelectionSort {
-    void sort(int arr[])
+public class Main {
+    static void sort(int arr[])
     {
         int n = arr.length;
 
@@ -18,7 +18,7 @@ class SelectionSort {
         }
     }
 
-    void printArray(int arr[])
+    static void printArray(int arr[])
     {
         int n = arr.length;
         for (int i = 0; i < n; ++i)
@@ -29,12 +29,11 @@ class SelectionSort {
     // main function
     public static void main(String args[])
     {
-        SelectionSort elSorting = new SelectionSort();
         int arr[] = { 64, 25, 12, 22, 11 };
 
-        elSorting.sort(arr);
+        sort(arr);
         System.out.println("Arreglo ordenado con selection sort:");
-        elSorting.printArray(arr);
+        printArray(arr);
     }
 }
 
