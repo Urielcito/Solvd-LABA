@@ -1,8 +1,10 @@
-public abstract class Animal extends Cell{
+public abstract class Animal extends Cell implements Moveable{
     protected String speciesName;
     protected boolean hasFur;
     protected String type;
     protected String gender;
+
+    protected static int animalCount;
 
     public String getSpeciesName() {
         return speciesName;
@@ -36,12 +38,19 @@ public abstract class Animal extends Cell{
         this.gender = gender;
     }
 
+    static{
+        animalCount = 0;
+        System.out.println("Clase Animal cargada");
+    }
+
+
     public Animal(){
         super();
         this.speciesName = "";
         this.hasFur = false;
         this.type = "generic";
         this.gender = "undetermined";
+        animalCount++;
     }
     public Animal(String speciesName, boolean hasFur, String type, String gender) {
         super();
@@ -49,9 +58,10 @@ public abstract class Animal extends Cell{
         this.hasFur = hasFur;
         this.type = type;
         this.gender = gender;
+        animalCount++;
     }
 
-    public boolean Swim(){
+    public boolean swim(){
         double initialEnergy = energy;
         double initialStored = storedEnergy;
         if(health != 0)
@@ -68,7 +78,10 @@ public abstract class Animal extends Cell{
         return energy < initialEnergy || storedEnergy < initialStored; // return true if animal swimmed successfully
     }
 
-    public Animal Reproduce(Animal offspring){
+    public static int animalsCreated(){
+        return animalCount;
+    }
+    public Animal reproduce(Animal offspring){
         offspring.speciesName = speciesName;
         offspring.hasFur = hasFur;
         offspring.type = type;
@@ -76,7 +89,7 @@ public abstract class Animal extends Cell{
         return offspring;
     }
 
-    public boolean Jump(){
+    public boolean jump(){
         double initialEnergy = energy;
         double initialStored = storedEnergy;
         if(health != 0)
@@ -87,13 +100,13 @@ public abstract class Animal extends Cell{
                 spendEnergy(energyPerOperation);
             spendOxygen(energyPerOperation);
 
-            if (energy <= 0 && Eat() == false)
+            if (energy <= 0 && eat() == false)
                 takeDamage(energyPerOperation);
         }
         return energy < initialEnergy || storedEnergy < initialStored; // return true if animal jumped succesfully
     }
 
-    public boolean Bite(Animal animalB)
+    public boolean bite(Animal animalB)
     {
         double initialEnergy = energy;
         double initialStored = storedEnergy;

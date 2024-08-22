@@ -1,46 +1,15 @@
 # Solvd-LABA
-Readme para que el profe se deje de joder (es chiste)
-
+## Changelog:
 ```
-class SelectionSort {
-    void sort(int arr[])
-    {
-        int n = arr.length;
-
-        for (int i = 0; i < n - 1; i++) {
-            // Encontrar minimo del array, a partir de i + 1 para evitar agarrar siempre el mismo minimo, ignorando los valores que estan atras de i.
-            int min_idx = i;
-            for (int j = i + 1; j < n; j++) {
-                if (arr[j] < arr[min_idx]) // Compara el valor en la posicion i con el que esta en la posicion j y si es menor, guarda el index del menor en min_idx
-                    min_idx = j;
-            }
-
-            // Intercambia el nuevo minimo encontrado con el valor que estaba en la posicion i
-            int temp = arr[min_idx];
-            arr[min_idx] = arr[i];
-            arr[i] = temp;
-        }
-    }
-
-    void printArray(int arr[])
-    {
-        int n = arr.length;
-        for (int i = 0; i < n; ++i)
-            System.out.print(arr[i] + " ");
-        System.out.println();
-    }
-
-    // main function
-    public static void main(String args[])
-    {
-        SelectionSort elSorting = new SelectionSort();
-        int arr[] = { 64, 25, 12, 22, 11 };
-
-        elSorting.sort(arr);
-        System.out.println("Arreglo ordenado con selection sort:");
-        elSorting.printArray(arr);
-    }
-}
+	- Added 5 interfaces (Eater, Moveable, Thinker, Reproducible, Growable)
+	- Fixed camelCase for all method names.
+	- Changed Cell's kill() method to be final.
+	- Changed Person's variable 'name' to be final.
+	- Changed Person's class type to be final.
+	- Added static variable animalCount to Animal
+	- Added static block in Animal to initialize animalCount = 0.
+	- Added static method in Animal to return animalCount.
+	- Improved the main method in Main to better reflect each requested feature.
 ```
 
 

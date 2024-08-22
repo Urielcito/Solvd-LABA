@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public abstract class Cell {
+public abstract class Cell implements Eater{
     protected int health;
     protected int energyPerOperation;
     protected double energy;
@@ -54,12 +54,8 @@ public abstract class Cell {
         this.oxygen = oxygen;
     }
 
-    public boolean isAlive() {
+    final public boolean isAlive() {
         return alive;
-    }
-
-    public void Kill(boolean alive) {
-        this.alive = alive;
     }
 
     public Cell() {
@@ -82,7 +78,7 @@ public abstract class Cell {
 
     public abstract void showEverything();
 
-    protected void Kill() {
+    final protected void kill() {
         this.alive = false;
         this.energyPerOperation = 0;
         this.oxygen = 0;
@@ -90,21 +86,21 @@ public abstract class Cell {
         this.storedEnergy = 0;
     }
 
-    protected void Breathe() {
+    protected void breathe() {
         oxygen = 100;
     }
 
     public void takeDamage(int damage) {
         health -= damage;
         if (health <= 0) {
-            Kill();
+            kill();
         }
     }
 
     protected void spendOxygen(double energyUsed) {
         oxygen -= energyUsed / 2;
         if (oxygen < (energyPerOperation/2))
-            Breathe();
+            breathe();
     }
     protected void spendEnergy(double energyUsed){
         energy -= energyUsed;
@@ -117,7 +113,7 @@ public abstract class Cell {
             storedEnergy = 0;
     }
 
-    protected boolean Move() {
+    public boolean move() {
         double initialEnergy = energy;
         double initialStored = storedEnergy;
         if(health != 0)
@@ -128,13 +124,13 @@ public abstract class Cell {
                 spendEnergy(energyPerOperation);
             spendOxygen(energyPerOperation);
 
-            if (energy <= 0 && Eat() == false)
+            if (energy <= 0 && eat() == false)
                 takeDamage(energyPerOperation);
         }
         return energy < initialEnergy || storedEnergy < initialStored; // return true if cell moved successfully
     }
 
-    public boolean Eat() {
+    public boolean eat() {
         double initialStored = storedEnergy;
             while (storedEnergy != 0 && energy < 100) {
                 energy += 1;
@@ -149,14 +145,14 @@ public abstract class Cell {
         double rateOfSuccess = 100 - energy;
         int amountOfTries = r.nextInt(0, 6);
         while (energy > energyPerOperation && amountOfTries != 0) {
-            Move();
+            move();
             double chanceToFindFood = r.nextDouble(0, 100);
             if (chanceToFindFood > rateOfSuccess)
                 food++;
             amountOfTries--;
         }
         storedEnergy += food * 60;
-        Eat();
+        eat();
         return food;
     }
 }

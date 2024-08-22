@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public abstract class Human extends Animal{
+public abstract class Human extends Animal implements Thinker{
     protected int age;
     protected String birthday;
     protected int intelligence;
@@ -62,7 +62,7 @@ public abstract class Human extends Animal{
         this.intelligence = r.nextInt(0, averageIntelligence / 10);
     }
 
-    protected boolean Think(){
+    public boolean think(){
         int success = intelligence;
         if(success < 10);
             success = 10;
@@ -78,7 +78,7 @@ public abstract class Human extends Animal{
         intelligence += reward;
         return thought < success; //true if the thinking was effective
     }
-    public boolean SolveProblem(){
+    public boolean solveProblem(){
         boolean solved = false;
         if(health != 0)
         {
@@ -88,9 +88,9 @@ public abstract class Human extends Animal{
                 spendEnergy(energyPerOperation);
             spendOxygen(energyPerOperation);
 
-            if (energy <= 0 && Eat() == false)
+            if (energy <= 0 && eat() == false)
                 takeDamage(energyPerOperation);
-            solved = Think();
+            solved = think();
         }
         return solved;
     }
@@ -102,15 +102,15 @@ public abstract class Human extends Animal{
         double rateOfSuccess = 100 - energy;
         int amountOfTries = r.nextInt(0, 6);
         while (energy > energyPerOperation - 10 && amountOfTries != 0) {
-            Move();
-            SolveProblem();
+            move();
+            solveProblem();
             double chanceToFindFood = r.nextDouble(0, 100);
             if (chanceToFindFood > rateOfSuccess)
                 food++;
             amountOfTries--;
         }
         storedEnergy += food * 100;
-        Eat();
+        eat();
         return food;
     }
 

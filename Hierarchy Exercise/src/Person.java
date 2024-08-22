@@ -2,15 +2,11 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Random;
 
-public class Person extends Human{
-    protected String name;
+final public class Person extends Human implements Reproducible{
+    final protected String name;
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Person(){ //Empty constructor
@@ -43,7 +39,8 @@ public class Person extends Human{
         this.name = name;
     }
 
-    public Person Reproduce(Person parentB, String name){
+    public Object reproduce(Object objectB, String name){
+        Person parentB = (Person) objectB;
         Random chooseEthnicity = new Random();
         String childEthnicity = "";
         if(chooseEthnicity.nextInt(1,3) == 1)
@@ -57,8 +54,8 @@ public class Person extends Human{
         return child;
     }
 
-    public void Speak(){
-        Think();
+    public void speak(){
+        think();
         makeSound();
     }
     public void makeSound(){

@@ -44,7 +44,7 @@ public class Mushroom extends Cell{
     }
 
     @Override
-    protected void Breathe(){
+    protected void breathe(){
         oxygen = 100;
         releaseCO2(oxygen);
     }

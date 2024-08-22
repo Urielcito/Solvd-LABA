@@ -3,7 +3,7 @@ public class GuineaPig extends Animal{
     private String name;
     private String race;
 
-    private enum actions{
+    public static enum actions{
         ASK_FOR_FOOD, APPRECIATE_PATS, ANGRY, DANGER,CURIOUS
     };
 
@@ -54,7 +54,7 @@ public class GuineaPig extends Animal{
 
     @Override
     public void showEverything(){
-
+        System.out.println("Name: "+this.name+"\nRace: "+this.race);
     }
 
     @Override

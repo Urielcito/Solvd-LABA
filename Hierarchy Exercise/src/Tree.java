@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Tree extends Plant{
+public class Tree extends Plant implements Growable{
     private int height;
     private int humidity;
 
@@ -32,7 +32,7 @@ public class Tree extends Plant{
         this.humidity = humidity;
     }
 
-    private void Grow(){
+    public void grow(){
         if(isWatered)
         {
             height += 2;
@@ -59,8 +59,8 @@ public class Tree extends Plant{
         if(receivesSunlight && isWatered)
             food = 100;
         storedEnergy += food * 60;
-        Eat();
-        Grow();
+        eat();
+        grow();
         releaseOxygen();
         this.isWatered=false;
         return food;

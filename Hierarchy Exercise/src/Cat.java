@@ -38,15 +38,15 @@ public class Cat extends Animal{
         this.meow = meow;
     }
     public void makeSound(){
-        Meow();
+        meow();
     }
-    public void Meow(){
+    public void meow(){
         System.out.println(this.meow);
     }
 
     @Override
     public void showEverything(){
-        System.out.println("\nName: " + this.name + "Race: "+this.race+"\nMeow style: "+this.meow+"\n");
+        System.out.println("Name: " + this.name + "\nRace: "+this.race+"\nMeow style: "+this.meow+"\n");
     }
 
     @Override

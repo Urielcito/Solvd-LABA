@@ -31,11 +31,11 @@ public class Plant extends Cell{
 
     protected void releaseOxygen(){
         this.oxygen = 0;
-        Breathe();
+        breathe();
     }
 
     @Override
-    protected boolean Move(){
+    public boolean move(){
         System.out.println("The plant can't move, instead it will release oxygen.");
         releaseOxygen();
         return false;
@@ -47,12 +47,12 @@ public class Plant extends Cell{
         if(receivesSunlight && isWatered)
             food = 100;
         storedEnergy += food * 60;
-        Eat();
+        eat();
         this.isWatered=false;
         return food;
     }
 
-    public void Water(){
+    public void water(){
         this.isWatered=true;
     }
 
