@@ -2,6 +2,10 @@
 ## TO-DO:
 ```
 - Install log4j in the current java project
+- Create 5 custom exceptions.
+- Handle exceptions in 2 ways. (throws & try catch)
+- Use try-catch with resources.
+- Log messages to the console, file (log4J)
 ```
 ## Changelog:
 ```
