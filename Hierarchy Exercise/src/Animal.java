@@ -14,11 +14,11 @@ public abstract class Animal extends Cell implements Moveable{
         this.speciesName = speciesName;
     }
 
-    public boolean isHasFur() {
+    public boolean isFurry() {
         return hasFur;
     }
 
-    public void setHasFur(boolean hasFur) {
+    public void setFur(boolean hasFur) {
         this.hasFur = hasFur;
     }
 
