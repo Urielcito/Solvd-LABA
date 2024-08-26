@@ -1,4 +1,8 @@
-public abstract class Animal extends Cell implements Moveable{
+package Domain;
+
+import Service.Moveable;
+
+public abstract class Animal extends Cell implements Moveable {
     protected String speciesName;
     protected boolean hasFur;
     protected String type;
@@ -40,7 +44,7 @@ public abstract class Animal extends Cell implements Moveable{
 
     static{
         animalCount = 0;
-        System.out.println("Clase Animal cargada");
+        System.out.println("Clase Domain.Animal cargada");
     }
 
 

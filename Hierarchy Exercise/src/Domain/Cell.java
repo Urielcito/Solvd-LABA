@@ -1,6 +1,10 @@
+package Domain;
+
+import Service.Eater;
+
 import java.util.Random;
 
-public abstract class Cell implements Eater{
+public abstract class Cell implements Eater {
     protected int health;
     protected int energyPerOperation;
     protected double energy;

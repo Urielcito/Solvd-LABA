@@ -1,3 +1,5 @@
+package Domain;
+
 public class Cat extends Animal{
 
     private String name;
@@ -51,7 +53,7 @@ public class Cat extends Animal{
 
     @Override
     public String toString() {
-        return "Cat{" +
+        return "Domain.Cat{" +
                 "name='" + name + '\'' +
                 '}';
     }

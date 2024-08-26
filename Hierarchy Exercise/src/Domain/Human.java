@@ -1,6 +1,10 @@
+package Domain;
+
+import Service.Thinker;
+
 import java.util.Random;
 
-public abstract class Human extends Animal implements Thinker{
+public abstract class Human extends Animal implements Thinker {
     protected int age;
     protected String birthday;
     protected int intelligence;
@@ -41,13 +45,13 @@ public abstract class Human extends Animal implements Thinker{
     }
 
     public Human(){
-        this.speciesName = "Human";
+        this.speciesName = "Domain.Human";
         this.hasFur = false;
         this.type = "bipedal omnivore";
         this.gender = "undetermined";
     }
     public Human(String birthday, String ethnicity, int averageIntelligence) {
-        this.speciesName = "Human";
+        this.speciesName = "Domain.Human";
         this.hasFur = false;
         this.type = "bipedal omnivore";
         this.age = 1;

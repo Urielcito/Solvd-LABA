@@ -1,3 +1,5 @@
+package Domain;
+
 import java.util.Random;
 public class Fish extends Animal{
     double weight;
@@ -20,7 +22,7 @@ public class Fish extends Animal{
     }
 
     public Fish() {
-        this.speciesName = "Fish";
+        this.speciesName = "Domain.Fish";
         this.hasFur = false;
         this.type = "aquatic";
         Random r = new Random();
@@ -29,7 +31,7 @@ public class Fish extends Animal{
     }
 
     public Fish(double weight) {
-        this.speciesName = "Fish";
+        this.speciesName = "Domain.Fish";
         this.hasFur = false;
         this.type = "aquatic";
         Random r = new Random();

@@ -1,6 +1,10 @@
+package Domain;
+
+import Service.Growable;
+
 import java.util.Random;
 
-public class Tree extends Plant implements Growable{
+public class Tree extends Plant implements Growable {
     private int height;
     private int humidity;
 

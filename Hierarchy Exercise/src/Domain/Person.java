@@ -1,8 +1,13 @@
-import java.time.LocalDateTime;
-import java.util.Objects;
-import java.util.Random;
+package Domain;
 
-final public class Person extends Human implements Reproducible{
+import Exceptions.*;
+import Service.Reproducible;
+
+import java.time.LocalDateTime;
+import java.util.Random;
+import java.util.Scanner;
+
+final public class Person extends Human implements Reproducible {
     final protected String name;
 
     public String getName() {
@@ -38,19 +43,73 @@ final public class Person extends Human implements Reproducible{
         super(birthday, ethnicity, averageIntelligence);
         this.name = name;
     }
+    public static Person personFromInput() throws NoNameException{
+        try (Scanner read = new Scanner(System.in)){
+            System.out.println("Enter name: ");
+            String name = read.nextLine();
+            if(name == ""){
+                throw new NoNameException("Name can't be left empty");
+            }
 
-    public Object reproduce(Object objectB, String name){
-        Person parentB = (Person) objectB;
-        Random chooseEthnicity = new Random();
-        String childEthnicity = "";
-        if(chooseEthnicity.nextInt(1,3) == 1)
-            childEthnicity = ethnicity;
+            System.out.println("Enter birthday: ");
+            String birthday = read.nextLine();
+
+            System.out.println("Enter ethnicity: ");
+            String ethnicity = read.nextLine();
+
+            System.out.println("Enter age: ");
+            int age = read.nextInt();
+
+            System.out.println("Enter intelligence: ");
+            int intelligence = read.nextInt();
+
+            System.out.println("Enter gender: ");
+            String gender = read.nextLine();
+
+            return new Person(name, birthday, ethnicity, age, intelligence, gender);
+        } catch (Exception e){
+            System.out.println("An error occurred while reading from input");
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public static void validateGender(Person p) throws InvalidGenderException {
+        if(p.getGender().matches(".*\\d.*"))
+            throw new InvalidGenderException("Gender can't have numbers");
         else
-            childEthnicity = parentB.getEthnicity();
+            System.out.println("Gender is valid");
+    }
+    public static void validateAge(Person p) throws NegativeAgeException{
+        if(p.getAge() < 0)
+            throw new NegativeAgeException("Age can't be negative");
+        else
+            System.out.println("Age is valid.");
+    }
+    public static void validateIntelligence(Person p) throws NegativeIntException{
+        if(p.getIntelligence() < 0)
+            throw new NegativeIntException("Intelligence can't be negative");
+        else
+            System.out.println("Intelligence is valid.");
+    }
 
-        int averageIntelligence = (this.intelligence + parentB.getIntelligence()) / 2;
-        Person child = new Person(LocalDateTime.now().toString(), childEthnicity, averageIntelligence, name);
+    public Object reproduce(Object objectB, String name) throws TooYoungException {
+        Person parentB = (Person) objectB;
+        Person child;
+        if(this.age < 18 || parentB.getAge() < 18)
+        {
+            throw new TooYoungException("Persons under 18 years old shouldn't reproduce");
+        }
+        else {
+            Random chooseEthnicity = new Random();
+            String childEthnicity = "";
+            if (chooseEthnicity.nextInt(1, 3) == 1)
+                childEthnicity = ethnicity;
+            else
+                childEthnicity = parentB.getEthnicity();
 
+            int averageIntelligence = (this.intelligence + parentB.getIntelligence()) / 2;
+            child = new Person(LocalDateTime.now().toString(), childEthnicity, averageIntelligence, name);
+        }
         return child;
     }
 
@@ -71,7 +130,7 @@ final public class Person extends Human implements Reproducible{
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "Domain.Person{" +
                 "name='" + name + '\'' +
                 '}';
     }

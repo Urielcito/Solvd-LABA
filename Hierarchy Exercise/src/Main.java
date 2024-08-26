@@ -1,32 +1,39 @@
-import java.util.Scanner;
+import Domain.*;
+import Exceptions.NegativeAgeException;
+import Exceptions.NegativeIntException;
+import Exceptions.NoNameException;
+import Exceptions.TooYoungException;
 
 public class Main {
     public static void main(String[] args) {
-        // Cell has final kill() method.
-        // class Person is final.
-        // Person has final 'name' variable.
+        // Domain.Cell has final kill() method.
+        // class Domain.Person is final.
+        // Domain.Person has final 'name' variable.
 
         // Static variable: animalCount.
         // Static block: Initiate Animals.animalCount = 0.
         // Static method: Return animalCount (Animals.animalsCreated())
 
-        // Classes Cat, GuineaPig and Person override toString(), hashCode() and equals() from the Object class.
+        // Classes Domain.Cat, Domain.GuineaPig and Domain.Person override toString(), hashCode() and equals() from the Object class.
 
         System.out.println("\nPerson:");
-        Person p = new Person("Uriel", "11/12/2002", "White", 22, 125, "male");
+        Person p = new Person("Uriel", "11/12/2013", "White", 22, 125, "male");
         Person p2 = new Person("Naty", "17/02/2001", "Asian", 23, 130, "female");
-
-        Person child = (Person) p.reproduce(p2, "Fabricio");
-        Person child2 = (Person) p.reproduce(p2, "Julieta"); // Runtime polymorphism (casting Object -> Person)
-        p.showEverything();
-        p2.showEverything();
-        child.showEverything();
-        child2.showEverything();
+        try {
+            Person child = (Person) p.reproduce(p2, "Fabricio");
+            Person child2 = (Person) p.reproduce(p2, "Julieta"); // Runtime polymorphism (casting Object -> Domain.Person)
+            p.showEverything();
+            p2.showEverything();
+            child.showEverything();
+            child2.showEverything();
+        }catch (TooYoungException ex){
+            System.out.println("Exception caught");
+            System.out.println("Message: "+ex.getMessage());
+        }
 
 
         System.out.println("\nPlant:");
         Plant plant0 = new Plant(true, true);
-        plant0.releaseOxygen();
         plant0.searchForFood();
         plant0.water();
         plant0.showEverything();
@@ -58,9 +65,54 @@ public class Main {
         piggy0.makeSound(GuineaPig.actions.ASK_FOR_FOOD); // Compile time polymorphism
         piggy0.showEverything();
 
-        System.out.println("\nUse of static in Animal class:");
+        System.out.println("\nUse of static in Domain.Animal class:");
         System.out.println("animales creados: "+Animal.animalsCreated()); // Use of static block + static method + static variable
 
+        System.out.println("\n----EXCEPTIONS AND LOGGING----\n");
+
+        // REPRODUCTION RELATED EXCEPTION IS CAUGHT ABOVE IN "PERSON" SECTION
+
+        Person p3 = new Person("Age13", "11/12/2002", "white", 13, 100, "male");
+        Person p4 = new Person("Age-13", "17/2/2001", "white", -13, -100, "male");
+        System.out.println("Validating person of age 13.");
+        try{
+            Person.validateAge(p3);
+        } catch (NegativeAgeException ex){
+            System.out.println("Exception caught");
+            System.out.println("Message: "+ex);
+        }
+        System.out.println("Validating person of age -13.");
+        try{
+            Person.validateAge(p4);
+        } catch (NegativeAgeException ex){
+            System.out.println("Exception caught");
+            System.out.println("Message: "+ex);
+        }
+        System.out.println("Validating intelligence 100:");
+        try{
+            Person.validateIntelligence(p3);
+        } catch (NegativeIntException ex){
+            System.out.println("Exception caught");
+            System.out.println("Message: "+ex);
+        }
+        System.out.println("Validating intelligence -100:");
+        try{
+            Person.validateIntelligence(p4);
+        } catch (NegativeIntException ex){
+            System.out.println("Exception caught");
+            System.out.println("Message: "+ex);
+        }
+        System.out.println("Creating person from input..."); // TRY WITH RESOURCES DONE HERE
+        try {
+            Person p5 = Person.personFromInput();
+            if(p5 != null){
+                System.out.println("Created person: ");
+                p5.showEverything();
+            }
+        } catch(NoNameException ex){
+            System.out.println("Exception caught");
+            System.out.println("Message: "+ex);
+        }
     }
 }
 

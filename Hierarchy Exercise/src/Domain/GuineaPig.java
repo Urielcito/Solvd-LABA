@@ -1,3 +1,5 @@
+package Domain;
+
 public class GuineaPig extends Animal{
 
     private String name;

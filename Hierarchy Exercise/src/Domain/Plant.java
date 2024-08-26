@@ -1,4 +1,4 @@
-import java.util.Random;
+package Domain;
 
 public class Plant extends Cell{
     protected Boolean receivesSunlight;

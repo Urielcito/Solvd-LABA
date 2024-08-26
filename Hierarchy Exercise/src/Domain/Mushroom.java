@@ -1,3 +1,5 @@
+package Domain;
+
 import java.util.Random;
 
 public class Mushroom extends Cell{
