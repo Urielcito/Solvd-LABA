@@ -2,6 +2,8 @@
 ## TO-DO:
 ```
 - Log messages to the console, file (log4J)
+- Add 5 collections to the hierarchy. 
+- Create custom LinkedList with generic
 ```
 ## Changelog:
 ```
