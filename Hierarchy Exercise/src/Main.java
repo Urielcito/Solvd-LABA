@@ -3,8 +3,11 @@ import Exceptions.NegativeAgeException;
 import Exceptions.NegativeIntException;
 import Exceptions.NoNameException;
 import Exceptions.TooYoungException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Main {
+    private static Logger logger;
     public static void main(String[] args) {
         // Domain.Cell has final kill() method.
         // class Domain.Person is final.
@@ -15,7 +18,8 @@ public class Main {
         // Static method: Return animalCount (Animals.animalsCreated())
 
         // Classes Domain.Cat, Domain.GuineaPig and Domain.Person override toString(), hashCode() and equals() from the Object class.
-
+        Collections c = new Collections();
+        CustomLinkedList<Person> linkedList = new CustomLinkedList<>();
         System.out.println("\nPerson:");
         Person p = new Person("Uriel", "11/12/2013", "White", 22, 125, "male");
         Person p2 = new Person("Naty", "17/02/2001", "Asian", 23, 130, "female");
@@ -26,6 +30,10 @@ public class Main {
             p2.showEverything();
             child.showEverything();
             child2.showEverything();
+            c.students.add(child);
+            c.students.add(child2);
+
+
         }catch (TooYoungException ex){
             System.out.println("Exception caught");
             System.out.println("Message: "+ex.getMessage());
@@ -102,7 +110,7 @@ public class Main {
             System.out.println("Exception caught");
             System.out.println("Message: "+ex);
         }
-        System.out.println("Creating person from input..."); // TRY WITH RESOURCES DONE HERE
+        /*System.out.println("Creating person from input..."); // TRY WITH RESOURCES DONE HERE
         try {
             Person p5 = Person.personFromInput();
             if(p5 != null){
@@ -112,7 +120,22 @@ public class Main {
         } catch(NoNameException ex){
             System.out.println("Exception caught");
             System.out.println("Message: "+ex);
-        }
+        }*/
+        logger = LogManager.getLogger(Main.class);
+        logger.info("a");
+
+
+
+        c.friends.add(p);
+        c.friends.add(p2);
+        c.pets.add(cat0);
+        c.pets.add(piggy0);
+        //the two childs are added to students arraylist above
+        linkedList.append(p);
+        linkedList.append(p2);
+        linkedList.pop();
+        linkedList.display();
+
     }
 }
 
