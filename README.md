@@ -1,6 +1,8 @@
 # Solvd-LABA
 ## TO-DO:
 ```
+- Build jar file and deploy to the local repository
+- Run mvn for different phases from the maven lifecycle and check the result
 ```
 ## Changelog:
 ```
