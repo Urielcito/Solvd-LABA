@@ -19,7 +19,7 @@ public class Main {
 
         // Classes Domain.Cat, Domain.GuineaPig and Domain.Person override toString(), hashCode() and equals() from the Object class.
         Collections c = new Collections();
-        CustomLinkedList<Person> linkedList = new CustomLinkedList<>();
+        CustomLinkedList<Person> linkedList = new CustomLinkedList();
         System.out.println("\nPerson:");
         Person p = new Person("Uriel", "11/12/2013", "White", 22, 125, "male");
         Person p2 = new Person("Naty", "17/02/2001", "Asian", 23, 130, "female");
@@ -122,7 +122,7 @@ public class Main {
             System.out.println("Message: "+ex);
         }*/
         logger = LogManager.getLogger(Main.class);
-        logger.info("a");
+        logger.info("a"); // LOG INTO FILE, CONSOLE. DONE.
 
 
 
@@ -133,7 +133,7 @@ public class Main {
         //the two childs are added to students arraylist above
         linkedList.append(p);
         linkedList.append(p2);
-        linkedList.pop();
+        //linkedList.pop(); pop deletes the last node
         linkedList.display();
 
     }
