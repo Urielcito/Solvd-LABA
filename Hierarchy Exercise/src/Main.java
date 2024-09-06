@@ -121,6 +121,7 @@ public class Main {
             System.out.println("Exception caught");
             System.out.println("Message: "+ex);
         }*/
+
         logger = LogManager.getLogger(Main.class);
         logger.info("a"); // LOG INTO FILE, CONSOLE. DONE.
 
@@ -135,6 +136,7 @@ public class Main {
         linkedList.append(p2);
         //linkedList.pop(); pop deletes the last node
         linkedList.display();
+
 
     }
 }

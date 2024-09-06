@@ -1,12 +1,10 @@
 # Solvd-LABA
 ## TO-DO:
 ```
-- Build jar file and deploy to the local repository
-- Run mvn for different phases from the maven lifecycle and check the result
+- Deploy jar file to the local repository??
 ```
 ## Changelog:
 ```
-- Installed maven on the project
-- Successfully installed log4j through maven
-- We are now able to log things to a file and to the console at the same time
+- Built jar file located in 'target' folder.
+- Different maven lifecycle commands worked succesfully (install, package, compile, validate) deploy command didn't work
 ```
