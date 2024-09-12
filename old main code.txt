@@ -1,15 +1,4 @@
-import Domain.*;
-import Exceptions.NegativeAgeException;
-import Exceptions.NegativeIntException;
-import Exceptions.NoNameException;
-import Exceptions.TooYoungException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-public class Main {
-    private static Logger logger;
-    public static void main(String[] args) {
-        // Domain.Cell has final kill() method.
+// Domain.Cell has final kill() method.
         // class Domain.Person is final.
         // Domain.Person has final 'name' variable.
 
@@ -136,8 +125,3 @@ public class Main {
         linkedList.append(p2);
         //linkedList.pop(); pop deletes the last node
         linkedList.display();
-
-
-    }
-}
-
