@@ -4,7 +4,7 @@
 - Create 3 custom Lambda functions with generics.
 - Create 5 complex Enums(with fields, methods, blocks)
 
-###( NOT NOW )
+### ( NOT NOW )
 - Add 7 collection streaming in the hierarchy with terminal and non-terminal operations.
 - Using reflection extract information(modifiers, return types, parameters, etc) about fields, constructors, methods.
 ## Changelog:
