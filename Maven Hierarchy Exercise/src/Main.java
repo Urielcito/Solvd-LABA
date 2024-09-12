@@ -14,15 +14,14 @@ public class Main {
     public static void main(String[] args) {
         logger = LogManager.getLogger(Main.class);
         File file = new File("resources/text.txt");
+        File output = new File("resources/output.txt");
         try{
             String string = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
-            System.out.println("Text of the file: " + string);
-            // Using countMatches (LESS ROBUST)
-            System.out.println("(countMatches method) \nFile has " + (1 + StringUtils.countMatches(string, " ")) + " words.");
-
-            // Using split (ROBUST)
             String[] words = StringUtils.split(string);
-            System.out.println("(split method) \nFile has " + words.length + " words.");
+            int amountOfWords = words.length;
+
+            System.out.println("Text of the file: " + string);
+            FileUtils.writeStringToFile(output, "File has "+amountOfWords+" words.", StandardCharsets.UTF_8);
 
         } catch(IOException e){
             logger.error("An IOException occurred while reading the file: " + file.getAbsolutePath(), e);
