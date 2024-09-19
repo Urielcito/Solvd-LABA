@@ -38,7 +38,10 @@
 - **Reflection**: Main method.
 
 ## Changelog:
-
+### Sep 18.
+- New readme section: It shows where are some of the most important topics reflected in the project's code.
+- Removed TO-DO and relevant code sections from README to make the new section stand out
+- Finished the lambda functions, complex enums, streaming and reflection homework, everything is in the main method.
 ### Sep 12.
 - Moved whole project to quickstart maven archetype
 - Deleted all demo code for previous homework and stored it in a txt just in case
