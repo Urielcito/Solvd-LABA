@@ -19,6 +19,44 @@ try{
 	System.out.println("Text of the file: " + string);
 	FileUtils.writeStringToFile(output, "File has "+amountOfWords+" words.", StandardCharsets.UTF_8);
 ```
+## Examples of some terms inside the code:
+- **P.O.O**: Everything makes use of P.O.O.
+
+- **Polymorphism**: In the Move() method many of the classes have.
+
+- **Inheritance**: Many classes inherit from Cell.
+
+- **Abstraction**: Every class.
+
+- **Encapsulation**: Every class.
+
+- **Overriding**: Cell's methods.
+
+- **Overloading**: GuineaPig class.
+
+- **.this**: Constructor of any class.
+
+- **Interfaces**: Service package.
+
+- **Constructor**: Every class has one.
+
+- **Default constructor**: Invisible.
+
+- **Logger**: Main method.
+
+- **Exception**: Exceptions package.
+
+- **List**: Main method.
+
+- **ArrayList**: Domain.Collections class.
+
+- **Set, Deck, Map, Hash..**: I didn't code any.
+
+- **Streams**: Main method.
+
+- **Lambda function**: Main method.
+
+- **Reflection**: Main method.
 
 ## Changelog:
 
