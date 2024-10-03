@@ -1,4 +1,4 @@
-## Current project's relational model:
+# Relational Model
 
 ANIMAL(id, speciesName, hasFur, type, gender)
 
@@ -20,9 +20,15 @@ PLANT(id, receivesSunlight, isWatered)
 
 TREE(id, height, humidity)
 
-My project hierarchy is a particular one which doesn't have any relationships between entities, a SQL schema based on this RM would only serve as a way of storaging simple instances of each object
+My project hierarchy is a particular one which doesn't have any relationships between entities, this SQL schema would only serve as a way of storaging simple data
 
-Note: If relations are needed, I shall redo all the hierarchy to one that will properly adapt to future requirements instead.
+- Note: If relations are needed, I shall redo all the hierarchy to one that will properly adapt to future requirements instead.
+
+# Entity-Relation Model (graphical representation of RM)
+
+<img src='mer.png' width=100%>
+
+
 
 ## Changelog:
 ### Oct 3.
