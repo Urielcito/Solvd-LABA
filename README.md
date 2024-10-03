@@ -1,43 +1,33 @@
-## Examples of some terms inside the code:
-- **P.O.O**: Everything makes use of P.O.O.
+## Current project's relational model:
 
-- **Polymorphism**: In the Move() method many of the classes have.
+ANIMAL(id, speciesName, hasFur, type, gender)
 
-- **Inheritance**: Many classes inherit from Cell.
+CAT(id, name, race, meow)
 
-- **Abstraction**: Every class.
+CELL(id, health, energyPerOperation, energy, storedEnergy, oxygen, alive, maxEnergy, maxOxygen, storageCapacity)
 
-- **Encapsulation**: Every class.
+FISH(id, weight, eggsLayed)
 
-- **Overriding**: Cell's methods.
+GUINEAPIG(id, name, race)
 
-- **Overloading**: GuineaPig class.
+HUMAN(id, age, birthday, intelligence, ethnicity)
 
-- **.this**: Constructor of any class.
+MUSHROOM(id, areaCovered, count)
 
-- **Interfaces**: Service package.
+PERSON(id, name)
 
-- **Constructor**: Every class has one.
+PLANT(id, receivesSunlight, isWatered)
 
-- **Default constructor**: Invisible.
+TREE(id, height, humidity)
 
-- **Logger**: Main method.
+My project hierarchy is a particular one which doesn't have any relationships between entities, a SQL schema based on this RM would only serve as a way of storaging simple instances of each object
 
-- **Exception**: Exceptions package.
-
-- **List**: Main method.
-
-- **ArrayList**: Domain.Collections class.
-
-- **Set, Deck, Map, Hash..**: I didn't code any.
-
-- **Streams**: Main method.
-
-- **Lambda function**: Main method.
-
-- **Reflection**: Main method.
+Note: If relations are needed, I shall redo all the hierarchy to one that will properly adapt to future requirements instead.
 
 ## Changelog:
+### Oct 3.
+- Removed last readme sections that aided in showing my code during the exam
+- Added my first try at a relational model
 ### Sep 18.
 - New readme section: It shows where are some of the most important topics reflected in the project's code.
 - Removed TO-DO and relevant code sections from README to make the new section stand out
