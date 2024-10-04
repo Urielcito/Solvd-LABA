@@ -1,24 +1,90 @@
-# Relational Model
+# MySQL Workbench commands to create the schema and the tables:
 
-ANIMAL(id, speciesName, hasFur, type, gender)
-
-CAT(id, name, race, meow)
-
-CELL(id, health, energyPerOperation, energy, storedEnergy, oxygen, alive, maxEnergy, maxOxygen, storageCapacity)
-
-FISH(id, weight, eggsLayed)
-
-GUINEAPIG(id, name, race)
-
-HUMAN(id, age, birthday, intelligence, ethnicity)
-
-MUSHROOM(id, areaCovered, count)
-
-PERSON(id, name)
-
-PLANT(id, receivesSunlight, isWatered)
-
-TREE(id, height, humidity)
+´´´
+CREATE DATABASE  IF NOT EXISTS `proyectosolvd` 
+USE `proyectosolvd`;
+DROP TABLE IF EXISTS `animal`;
+CREATE TABLE `animal` (
+  `id` int NOT NULL,
+  `speciesName` varchar(45) DEFAULT NULL,
+  `hasFur` tinyint DEFAULT NULL,
+  `type` varchar(45) DEFAULT NULL,
+  `gender` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
+DROP TABLE IF EXISTS `cat`;
+CREATE TABLE `cat` (
+  `id` int NOT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `race` varchar(45) DEFAULT NULL,
+  `meow` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
+DROP TABLE IF EXISTS `cell`;
+CREATE TABLE `cell` (
+  `id` int NOT NULL,
+  `health` double DEFAULT NULL,
+  `energyPerOperation` double DEFAULT NULL,
+  `energy` double DEFAULT NULL,
+  `storedEnergy` double DEFAULT NULL,
+  `oxygen` double DEFAULT NULL,
+  `alive` tinyint DEFAULT NULL,
+  `maxEnergy` double DEFAULT NULL,
+  `maxOxygen` double DEFAULT NULL,
+  `storageCapacity` double DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
+DROP TABLE IF EXISTS `fish`;
+CREATE TABLE `fish` (
+  `id` int NOT NULL,
+  `weight` varchar(45) DEFAULT NULL,
+  `eggsLayed` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
+DROP TABLE IF EXISTS `guineapig`;
+CREATE TABLE `guineapig` (
+  `id` int NOT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `race` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
+DROP TABLE IF EXISTS `human`;
+CREATE TABLE `human` (
+  `id` int NOT NULL,
+  `age` int DEFAULT NULL,
+  `birthday` date DEFAULT NULL,
+  `intelligence` int DEFAULT NULL,
+  `ethnicity` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
+DROP TABLE IF EXISTS `mushroom`;
+CREATE TABLE `mushroom` (
+  `id` int NOT NULL,
+  `areaCovered` int DEFAULT NULL,
+  `count` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
+DROP TABLE IF EXISTS `person`;
+CREATE TABLE `person` (
+  `id` int NOT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
+DROP TABLE IF EXISTS `plant`;
+CREATE TABLE `plant` (
+  `id` int NOT NULL,
+  `receivesSunlight` tinyint DEFAULT NULL,
+  `isWatered` tinyint DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
+DROP TABLE IF EXISTS `tree`;
+CREATE TABLE `tree` (
+  `id` int NOT NULL,
+  `height` double DEFAULT NULL,
+  `humidity` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
+´´´
 
 My project hierarchy is a particular one which doesn't have any relationships between entities, this SQL schema would only serve as a way of storaging simple data
 
@@ -31,6 +97,10 @@ My project hierarchy is a particular one which doesn't have any relationships be
 
 
 ## Changelog:
+### Oct 4.
+- Removed useless RM, kept the cool diagram
+- Added SQL commands to create the schema
+- Added the SQL file to directly import into MySQL Workbench in case something goes wrong
 ### Oct 3.
 - Removed last readme sections that aided in showing my code during the exam
 - Added my first try at a relational model
