@@ -1,7 +1,7 @@
 # MySQL Workbench commands to create the schema and the tables:
 
 ```
-CREATE DATABASE  IF NOT EXISTS `proyectosolvd` 
+CREATE DATABASE  IF NOT EXISTS `proyectosolvd`; 
 USE `proyectosolvd`;
 DROP TABLE IF EXISTS `animal`;
 CREATE TABLE `animal` (
@@ -11,7 +11,7 @@ CREATE TABLE `animal` (
   `type` varchar(45) DEFAULT NULL,
   `gender` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-)
+);
 DROP TABLE IF EXISTS `cat`;
 CREATE TABLE `cat` (
   `id` int NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE `cat` (
   `race` varchar(45) DEFAULT NULL,
   `meow` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-)
+);
 DROP TABLE IF EXISTS `cell`;
 CREATE TABLE `cell` (
   `id` int NOT NULL,
@@ -33,21 +33,21 @@ CREATE TABLE `cell` (
   `maxOxygen` double DEFAULT NULL,
   `storageCapacity` double DEFAULT NULL,
   PRIMARY KEY (`id`)
-)
+);
 DROP TABLE IF EXISTS `fish`;
 CREATE TABLE `fish` (
   `id` int NOT NULL,
   `weight` varchar(45) DEFAULT NULL,
   `eggsLayed` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-)
+);
 DROP TABLE IF EXISTS `guineapig`;
 CREATE TABLE `guineapig` (
   `id` int NOT NULL,
   `name` varchar(45) DEFAULT NULL,
   `race` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-)
+);
 DROP TABLE IF EXISTS `human`;
 CREATE TABLE `human` (
   `id` int NOT NULL,
@@ -56,34 +56,35 @@ CREATE TABLE `human` (
   `intelligence` int DEFAULT NULL,
   `ethnicity` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-)
+);
 DROP TABLE IF EXISTS `mushroom`;
 CREATE TABLE `mushroom` (
   `id` int NOT NULL,
   `areaCovered` int DEFAULT NULL,
   `count` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-)
+);
 DROP TABLE IF EXISTS `person`;
 CREATE TABLE `person` (
   `id` int NOT NULL,
   `name` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-)
+);
 DROP TABLE IF EXISTS `plant`;
 CREATE TABLE `plant` (
   `id` int NOT NULL,
   `receivesSunlight` tinyint DEFAULT NULL,
   `isWatered` tinyint DEFAULT NULL,
   PRIMARY KEY (`id`)
-)
+);
 DROP TABLE IF EXISTS `tree`;
 CREATE TABLE `tree` (
   `id` int NOT NULL,
   `height` double DEFAULT NULL,
   `humidity` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-)
+);
+
 ```
 
 My project hierarchy is a particular one which doesn't have any relationships between entities, this SQL schema would only serve as a way of storaging simple data
