@@ -1,6 +1,6 @@
 # MySQL Workbench commands to create the schema and the tables:
 
-´´´
+```
 CREATE DATABASE  IF NOT EXISTS `proyectosolvd` 
 USE `proyectosolvd`;
 DROP TABLE IF EXISTS `animal`;
@@ -84,7 +84,7 @@ CREATE TABLE `tree` (
   `humidity` int DEFAULT NULL,
   PRIMARY KEY (`id`)
 )
-´´´
+```
 
 My project hierarchy is a particular one which doesn't have any relationships between entities, this SQL schema would only serve as a way of storaging simple data
 
