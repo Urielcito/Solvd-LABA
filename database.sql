@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `proyectosolvd` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `proyectosolvd`;
 -- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
 -- Host: localhost    Database: proyectosolvd
@@ -30,7 +28,10 @@ CREATE TABLE `animal` (
   `hasFur` tinyint DEFAULT NULL,
   `type` varchar(45) DEFAULT NULL,
   `gender` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `ownerId` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `ownerId_idx` (`ownerId`),
+  CONSTRAINT `ownerId` FOREIGN KEY (`ownerId`) REFERENCES `person` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -100,6 +101,29 @@ LOCK TABLES `cell` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `country`
+--
+
+DROP TABLE IF EXISTS `country`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `country` (
+  `id` int NOT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `country`
+--
+
+LOCK TABLES `country` WRITE;
+/*!40000 ALTER TABLE `country` DISABLE KEYS */;
+/*!40000 ALTER TABLE `country` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `fish`
 --
 
@@ -121,6 +145,32 @@ CREATE TABLE `fish` (
 LOCK TABLES `fish` WRITE;
 /*!40000 ALTER TABLE `fish` DISABLE KEYS */;
 /*!40000 ALTER TABLE `fish` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `fish_eaten`
+--
+
+DROP TABLE IF EXISTS `fish_eaten`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `fish_eaten` (
+  `idCat` int NOT NULL,
+  `idFish` int NOT NULL,
+  PRIMARY KEY (`idCat`,`idFish`),
+  KEY `fish_idx` (`idFish`),
+  CONSTRAINT `cat` FOREIGN KEY (`idCat`) REFERENCES `cat` (`id`),
+  CONSTRAINT `fish` FOREIGN KEY (`idFish`) REFERENCES `fish` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `fish_eaten`
+--
+
+LOCK TABLES `fish_eaten` WRITE;
+/*!40000 ALTER TABLE `fish_eaten` DISABLE KEYS */;
+/*!40000 ALTER TABLE `fish_eaten` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -174,6 +224,28 @@ LOCK TABLES `human` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `identity`
+--
+
+DROP TABLE IF EXISTS `identity`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `identity` (
+  `number` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`number`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `identity`
+--
+
+LOCK TABLES `identity` WRITE;
+/*!40000 ALTER TABLE `identity` DISABLE KEYS */;
+/*!40000 ALTER TABLE `identity` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `mushroom`
 --
 
@@ -207,7 +279,13 @@ DROP TABLE IF EXISTS `person`;
 CREATE TABLE `person` (
   `id` int NOT NULL,
   `name` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `identity` int DEFAULT NULL,
+  `countryId` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `identity_idx` (`identity`),
+  KEY `country_idx` (`countryId`),
+  CONSTRAINT `country` FOREIGN KEY (`countryId`) REFERENCES `country` (`id`),
+  CONSTRAINT `identity` FOREIGN KEY (`identity`) REFERENCES `identity` (`number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -277,4 +355,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-10-04 10:33:46
+-- Dump completed on 2024-10-08 14:37:30
