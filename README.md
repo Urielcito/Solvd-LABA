@@ -1,3 +1,141 @@
+# Requested MySQL Queries
+- "10 statements for insertion"
+```
+INSERT INTO country (id, name) VALUES (1, 'Uruguay');
+INSERT INTO identity (number) VALUES (52629636);
+INSERT INTO identity (number) VALUES (51098210);
+INSERT INTO person(id,name,identity,countryId) VALUES (0, 'Uriel', 52629636, 1);
+INSERT INTO person (id, name, identity, countryId) VALUES (1, 'Natalia', 51098210, 1);
+INSERT INTO animal (id, speciesName, hasFur, type, gender, ownerId) VALUES (1, 'Cat', 1, 'Mammal', 'Male', 0);
+INSERT INTO animal (id, speciesName, hasFur, type, gender, ownerId) VALUES (2, 'Fish', 0, 'Aquatic', 'Female', 1);
+INSERT INTO cat (id, name, race, meow) VALUES (0, 'Sir Cat', 'Siamese', 'Soft');
+INSERT INTO fish (id, weight, eggsLayed) VALUES (1, '2kg', 200);
+INSERT INTO tree (id, height, humidity) VALUES (0, 5.5, 75);
+```
+- "10 statements for updating"
+```
+UPDATE animal SET speciesName = 'Dog' WHERE id = 1;
+UPDATE cat SET name = 'Fluffy' WHERE id = 0;
+UPDATE fish SET eggsLayed = 300 WHERE id = 1;
+UPDATE person SET name = 'Tuxedo Mask' WHERE id = 0;
+UPDATE country SET name = 'Japan' WHERE id = 1;
+UPDATE tree SET humidity = 80 WHERE id = 0;
+UPDATE person SET name = 'Sailor Moon' WHERE id = 1;
+UPDATE animal SET speciesName = 'Guinea Pig' WHERE id = 2;
+UPDATE animal SET gender = 'Female' WHERE id = 1;
+UPDATE fish SET weight = 2 WHERE id = 1;
+```
+- "10 statements for deletions" (I'm not deleting too much existing data so I don't have to insert more things for the next queries..)
+```
+DELETE FROM animal WHERE speciesName = 'Dodo'
+DELETE FROM cat WHERE name = 'Fluffy'
+DELETE FROM fish WHERE eggsLayed<200
+DELETE FROM person WHERE identity = 0
+DELETE FROM country WHERE name = "Netherlands"
+DELETE FROM cell WHERE health=0
+DELETE FROM animal WHERE hasFur=0
+DELETE FROM tree WHERE height=0.0
+DELETE FROM human WHERE intelligence = 0
+DELETE FROM mushroom WHERE areaCovered = 0
+```
+- "5 alter table"
+```
+ALTER TABLE animal MODIFY COLUMN gender VARCHAR(100);
+ALTER TABLE identity ADD CONSTRAINT unique_identity_number UNIQUE (number);
+ALTER TABLE person MODIFY name VARCHAR(200);
+ALTER TABLE fish MODIFY weight DOUBLE;
+ALTER TABLE animal MODIFY COLUMN speciesName VARCHAR(200);
+```
+- "1 big statement to join all tables in the database"
+```
+SELECT *
+FROM animal
+LEFT JOIN person ON animal.ownerId = person.id
+LEFT JOIN cat ON animal.id = cat.id
+LEFT JOIN fish ON animal.id = fish.id
+LEFT JOIN guineapig ON animal.id = guineapig.id
+LEFT JOIN human ON animal.id = human.id
+LEFT JOIN country ON person.countryId = country.id
+LEFT JOIN identity ON person.identity = identity.number;
+```
+- "5 statements with left, right, inner, outer joins"
+```
+-- LEFT JOIN
+SELECT person.name, animal.speciesName
+FROM person
+LEFT JOIN animal ON person.id = animal.ownerId;
+
+-- RIGHT JOIN
+SELECT person.name, country.name
+FROM person
+RIGHT JOIN country ON person.countryId = country.id;
+
+-- INNER JOIN
+SELECT cat.name, animal.speciesName
+FROM cat
+INNER JOIN animal ON cat.id = animal.id;
+
+-- FULL OUTER JOIN
+SELECT *
+FROM person
+LEFT JOIN country ON person.countryId = country.id
+UNION
+SELECT *
+FROM person
+RIGHT JOIN country ON person.countryId = country.id;
+
+-- LEFT JOIN with condition
+SELECT person.name, country.name
+FROM person
+LEFT JOIN country ON person.countryId = country.id
+WHERE country.name = 'Japan';
+```
+- "7 statements with aggregate functions, group by, without having"
+```
+-- Quantity of animals of each species
+SELECT speciesName, COUNT(*) FROM animal GROUP BY speciesName;
+
+-- Quantity of animals of each gender
+SELECT gender, COUNT(*) FROM animal GROUP BY gender;
+
+-- Quantity of persons from each country
+SELECT country.name, COUNT(person.id) FROM person INNER JOIN country ON person.countryId = country.id GROUP BY country.name;
+
+-- Quantity of cats from each race
+SELECT race, COUNT(*) FROM cat GROUP BY race;
+
+-- Average of intelligence for each ethnicity
+SELECT ethnicity, AVG(intelligence) FROM human GROUP BY ethnicity;
+
+-- Quantity of trees with the same height
+SELECT height, COUNT(*) FROM tree GROUP BY height;
+
+-- Quantity of fish with the same amount of eggs layed.
+SELECT eggsLayed, COUNT(*) FROM fish GROUP BY eggsLayed;
+```
+- "7 statements with aggregate functions, group by, having"
+```
+-- Animals for which there are more than one register for that species in the database.
+SELECT speciesName, COUNT(*) FROM animal GROUP BY speciesName HAVING COUNT(*) > 1;
+
+-- Animal genders for which there are more than one register for animals with that gender in the database.
+SELECT gender, COUNT(*) FROM animal GROUP BY gender HAVING COUNT(*) > 1;
+
+-- Amount of persons from a country which has more than one person registered living in it.
+SELECT country.name, COUNT(person.id) FROM person INNER JOIN country ON person.countryId = country.id GROUP BY country.name HAVING COUNT(person.id) > 1;
+
+-- Cat races that have more than one cat with that race registered in the database.
+SELECT race, COUNT(*) FROM cat GROUP BY race HAVING COUNT(*) > 1;
+
+-- Ethnicities that average an intelligence above 100.
+SELECT ethnicity, AVG(intelligence) FROM human GROUP BY ethnicity HAVING AVG(intelligence) > 100;
+
+-- Amount of trees that have any height above 1 meter.
+SELECT height, COUNT(*) FROM tree GROUP BY height HAVING COUNT(*) > 1;
+
+-- Amount of fish that have any amount of eggs layed above 100.
+SELECT eggsLayed, COUNT(*) FROM fish GROUP BY eggsLayed HAVING COUNT(*) > 100;
+```
 # MySQL Workbench commands to create the schema and the tables:
 
 ```
