@@ -1,13 +1,23 @@
 package Domain;
 
 public class GuineaPig extends Animal{
-
+    private int id;
     private String name;
     private String race;
 
     public static enum actions{
         ASK_FOR_FOOD, APPRECIATE_PATS, ANGRY, DANGER,CURIOUS
     };
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -26,6 +36,7 @@ public class GuineaPig extends Animal{
     }
 
     public GuineaPig(String name, String race) {
+        super();
         this.name = name;
         this.race = race;
     }

@@ -5,8 +5,19 @@ import Service.Growable;
 import java.util.Random;
 
 public class Tree extends Plant implements Growable {
+    private int id;
     private int height;
     private int humidity;
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getHeight() {
         return height;
@@ -25,6 +36,7 @@ public class Tree extends Plant implements Growable {
     }
 
     public Tree(){
+        super();
         this.receivesSunlight = true;
         this.isWatered = true;
         this.height = 1;

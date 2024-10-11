@@ -3,12 +3,23 @@ package Domain;
 import Service.Moveable;
 
 public abstract class Animal extends Cell implements Moveable {
+    protected int id;
+
     protected String speciesName;
     protected boolean hasFur;
     protected String type;
     protected String gender;
 
+    protected int ownerId;
     protected static int animalCount;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getSpeciesName() {
         return speciesName;
@@ -42,13 +53,21 @@ public abstract class Animal extends Cell implements Moveable {
         this.gender = gender;
     }
 
+    public int getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(int ownerId) {
+        this.ownerId = ownerId;
+    }
+
     static{
         animalCount = 0;
         System.out.println("Clase Domain.Animal cargada");
     }
 
 
-    public Animal(){
+    public Animal(int ownerId){
         super();
         this.speciesName = "";
         this.hasFur = false;
@@ -56,12 +75,14 @@ public abstract class Animal extends Cell implements Moveable {
         this.gender = "undetermined";
         animalCount++;
     }
-    public Animal(String speciesName, boolean hasFur, String type, String gender) {
+    public Animal(int id, String speciesName, boolean hasFur, String type, String gender, int ownerId) {
         super();
+        this.id = id;
         this.speciesName = speciesName;
         this.hasFur = hasFur;
         this.type = type;
         this.gender = gender;
+        this.ownerId = ownerId;
         animalCount++;
     }
 

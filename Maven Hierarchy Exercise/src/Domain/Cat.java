@@ -2,9 +2,18 @@ package Domain;
 
 public class Cat extends Animal{
 
+    private int id;
     private String name;
     private String race;
     private String meow;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -30,8 +39,9 @@ public class Cat extends Animal{
         this.meow = meow;
     }
 
-    public Cat(String name, String race, String meow) {
+    public Cat(int id, String name, String race, String meow) {
         super();
+        this.id = id;
         this.speciesName = "feline";
         this.hasFur = true;
         this.type = "cat";

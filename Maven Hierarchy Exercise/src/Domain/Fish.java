@@ -2,8 +2,19 @@ package Domain;
 
 import java.util.Random;
 public class Fish extends Animal{
+    int id;
     double weight;
     int eggsLayed;
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public double getWeight() {
         return weight;
@@ -22,6 +33,7 @@ public class Fish extends Animal{
     }
 
     public Fish() {
+        super();
         this.speciesName = "Domain.Fish";
         this.hasFur = false;
         this.type = "aquatic";
@@ -31,6 +43,7 @@ public class Fish extends Animal{
     }
 
     public Fish(double weight) {
+        super();
         this.speciesName = "Domain.Fish";
         this.hasFur = false;
         this.type = "aquatic";

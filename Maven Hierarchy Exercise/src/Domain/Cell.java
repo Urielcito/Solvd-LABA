@@ -5,6 +5,7 @@ import Service.Eater;
 import java.util.Random;
 
 public abstract class Cell implements Eater {
+    protected int id;
     protected int health;
     protected int energyPerOperation;
     protected double energy;
@@ -63,6 +64,7 @@ public abstract class Cell implements Eater {
     }
 
     public Cell() {
+        this.id = id;
         this.health = 100;
         this.energyPerOperation = 20;
         this.storedEnergy = 0;
@@ -71,7 +73,8 @@ public abstract class Cell implements Eater {
         this.alive = true;
     }
 
-    public Cell(int health, int energyPerOperation, double energy, double storedEnergy, double oxygen, boolean alive) {
+    public Cell(int id, int health, int energyPerOperation, double energy, double storedEnergy, double oxygen, boolean alive) {
+        this.id = id;
         this.health = health;
         this.energyPerOperation = energyPerOperation;
         this.storedEnergy = storedEnergy;

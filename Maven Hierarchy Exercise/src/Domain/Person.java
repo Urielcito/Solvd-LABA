@@ -8,7 +8,18 @@ import java.util.Random;
 import java.util.Scanner;
 
 final public class Person extends Human implements Reproducible {
+    protected int id;
     final protected String name;
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

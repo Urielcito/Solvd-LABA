@@ -1,8 +1,17 @@
 package Domain;
 
 public class Plant extends Cell{
+    protected int id;
     protected Boolean receivesSunlight;
     protected Boolean isWatered;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Boolean getReceivesSunlight() {
         return receivesSunlight;

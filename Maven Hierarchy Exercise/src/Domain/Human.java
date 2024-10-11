@@ -5,6 +5,7 @@ import Service.Thinker;
 import java.util.Random;
 
 public abstract class Human extends Animal implements Thinker {
+    protected int id;
     protected int age;
     protected String birthday;
     protected int intelligence;
@@ -12,6 +13,15 @@ public abstract class Human extends Animal implements Thinker {
     protected String ethnicity;
 
 
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getAge() {
         return age;
@@ -45,12 +55,14 @@ public abstract class Human extends Animal implements Thinker {
     }
 
     public Human(){
+        super();
         this.speciesName = "Domain.Human";
         this.hasFur = false;
         this.type = "bipedal omnivore";
         this.gender = "undetermined";
     }
     public Human(String birthday, String ethnicity, int averageIntelligence) {
+        super();
         this.speciesName = "Domain.Human";
         this.hasFur = false;
         this.type = "bipedal omnivore";

@@ -3,8 +3,17 @@ package Domain;
 import java.util.Random;
 
 public class Mushroom extends Cell{
+    private int id;
     private int areaCovered;
     private int count;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getAreaCovered() {
         return areaCovered;
