@@ -7,6 +7,8 @@ public class Mushroom extends Cell{
     private int areaCovered;
     private int count;
 
+
+
     public int getId() {
         return id;
     }
@@ -31,6 +33,12 @@ public class Mushroom extends Cell{
         this.count = count;
     }
 
+    public Mushroom(int id, int areaCovered, int count) {
+        super();
+        this.id = id;
+        this.areaCovered = areaCovered;
+        this.count= count;
+    }
     public Mushroom(){
         super();
         this.areaCovered = 2;

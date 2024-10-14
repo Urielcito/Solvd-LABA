@@ -13,6 +13,10 @@ public abstract class Animal extends Cell implements Moveable {
     protected int ownerId;
     protected static int animalCount;
 
+    public Animal() {
+
+    }
+
     public int getId() {
         return id;
     }

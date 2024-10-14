@@ -1,7 +1,9 @@
 # Relevant info for the DAO homework:
-- 'Service' package that's inside the src folder now hosts a large quantity of new interfaces (IAnimal, ICat, etc...) these are implemented in each respective DAO (for now, just AnimalDAO)
+- 'Service' package that's inside the src folder now hosts a large quantity of new interfaces (IAnimal, ICat, etc...) these are implemented in each respective DAO
 - New 'MySQL' package located inside the src folder that hosts the 'JDBC' class responsible for the connection to the database and all the Data Access Objects.
 - A copy of the connector jar file was stored under the folder Maven Hierarchy Exercise/lib/
+
+
 # Requested MySQL Queries
 - "10 statements for insertion"
 ```
@@ -284,6 +286,8 @@ CREATE TABLE `tree` (
 ```
 
 ## Changelog:
+### Oct 14.
+- Wrote every DAO, it should work as intended just for uploading & downloading those objects to/from the database, in the hierarchy itself they probably are not functional.
 ### Oct 10.
 - Added the requested SQL Statements
 - DAO Structure is done just for Animal class (this means I can now do every other class using this one as a template)

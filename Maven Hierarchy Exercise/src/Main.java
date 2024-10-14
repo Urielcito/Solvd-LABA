@@ -21,9 +21,8 @@ import java.util.function.*;
 import java.util.stream.Collectors;
 
 public class Main {
-    private static Logger logger;
+    private static final Logger logger = LogManager.getLogger(Main.class);
     public static void main(String[] args) {
-        logger = LogManager.getLogger(Main.class);
 
         // Below is all of the previous homework combined for convenience-----------------------------------------------
         /*

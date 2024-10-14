@@ -19,6 +19,27 @@ public abstract class Cell implements Eater {
 
     protected double storageCapacity = 1000;
 
+    public Cell(int id, int health, int energyPerOperation, double energy, double storedEnergy, double oxygen, boolean alive, double maxEnergy, double maxOxygen, double storageCapacity) {
+        this.id = id;
+        this.health = health;
+        this.energyPerOperation = energyPerOperation;
+        this.storedEnergy = storedEnergy;
+        this.energy = energy;
+        this.oxygen = oxygen;
+        this.alive = alive;
+        this.maxEnergy = maxEnergy;
+        this.maxOxygen = maxOxygen;
+        this.storageCapacity = storageCapacity;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getHealth() {
         return health;
     }
@@ -61,6 +82,30 @@ public abstract class Cell implements Eater {
 
     final public boolean isAlive() {
         return alive;
+    }
+
+    public double getMaxEnergy() {
+        return maxEnergy;
+    }
+
+    public void setMaxEnergy(double maxEnergy) {
+        this.maxEnergy = maxEnergy;
+    }
+
+    public double getMaxOxygen() {
+        return maxOxygen;
+    }
+
+    public void setMaxOxygen(double maxOxygen) {
+        this.maxOxygen = maxOxygen;
+    }
+
+    public double getStorageCapacity() {
+        return storageCapacity;
+    }
+
+    public void setStorageCapacity(double storageCapacity) {
+        this.storageCapacity = storageCapacity;
     }
 
     public Cell() {

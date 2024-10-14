@@ -35,8 +35,9 @@ public class GuineaPig extends Animal{
         this.race = race;
     }
 
-    public GuineaPig(String name, String race) {
+    public GuineaPig(int id, String name, String race) {
         super();
+        this.id = id;
         this.name = name;
         this.race = race;
     }

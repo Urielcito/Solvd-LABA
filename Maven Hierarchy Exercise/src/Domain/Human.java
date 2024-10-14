@@ -2,6 +2,7 @@ package Domain;
 
 import Service.Thinker;
 
+import java.sql.Date;
 import java.util.Random;
 
 public abstract class Human extends Animal implements Thinker {
@@ -11,6 +12,8 @@ public abstract class Human extends Animal implements Thinker {
     protected int intelligence;
 
     protected String ethnicity;
+
+
 
 
     @Override
@@ -51,6 +54,14 @@ public abstract class Human extends Animal implements Thinker {
     }
 
     public void setEthnicity(String ethnicity) {
+        this.ethnicity = ethnicity;
+    }
+    public Human(int id, int age, String birthday, int intelligence, String ethnicity) {
+        super();
+        this.id = id;
+        this.age = age;
+        this.birthday = birthday;
+        this.intelligence = intelligence;
         this.ethnicity = ethnicity;
     }
 

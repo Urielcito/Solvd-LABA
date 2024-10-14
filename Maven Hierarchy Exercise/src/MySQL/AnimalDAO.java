@@ -2,18 +2,22 @@ package MySQL;
 
 import Domain.Animal;
 import Service.IAnimal;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AnimalDAO extends MySql implements IAnimal {
+    private static final Logger logger = LogManager.getLogger(CatDAO.class);
     @Override
     public void Create(Animal anAnimal){
         strSQL = "INSERT INTO animal(id, speciesName, hasFur, type, gender, ownerId) VALUES ("+anAnimal.getId()+", '"+anAnimal.getSpeciesName()+"', "+anAnimal.isFurry()+", '"+anAnimal.getType()+"', '"+anAnimal.getGender()+"', "+anAnimal.getOwnerId()+");";
         try {
             update(strSQL);
         }catch(SQLException ex){
-            System.err.println("SQLException: "+ex.getMessage());
+            logger.error("SQLException: "+ex.getMessage());
         }
     }
 
@@ -28,7 +32,7 @@ public class AnimalDAO extends MySql implements IAnimal {
         try {
             update(strSQL);
         }catch(SQLException ex){
-            System.err.println("SQLException: "+ex.getMessage());
+            logger.error("SQLException: "+ex.getMessage());
         }
     }
 
@@ -40,7 +44,7 @@ public class AnimalDAO extends MySql implements IAnimal {
             update(strSQL);
             deleted = true;
         }catch(SQLException ex){
-            System.err.println("SQLException: " + ex.getMessage());
+            logger.error("SQLException: "+ex.getMessage());
         }
         return deleted;
 
@@ -68,7 +72,7 @@ public class AnimalDAO extends MySql implements IAnimal {
             }
             rs.close();
         } catch (SQLException ex) {
-            System.err.println("SQLException: " + ex.getMessage());
+            logger.error("SQLException: "+ex.getMessage());
         }
         return Animals;
     }

@@ -9,6 +9,8 @@ public class Tree extends Plant implements Growable {
     private int height;
     private int humidity;
 
+
+
     @Override
     public int getId() {
         return id;
@@ -35,6 +37,11 @@ public class Tree extends Plant implements Growable {
         this.humidity = humidity;
     }
 
+    public Tree(int id, int height, int humidity) { //mysql constructor
+        this.id = id;
+        this.height = height;
+        this.humidity = humidity;
+    }
     public Tree(){
         super();
         this.receivesSunlight = true;
@@ -42,8 +49,8 @@ public class Tree extends Plant implements Growable {
         this.height = 1;
         this.humidity = 5;
     }
-    public Tree(Boolean receivesSunlight, Boolean isWatered, int height, int humidity) {
-        super(receivesSunlight, isWatered);
+    public Tree(int id, Boolean receivesSunlight, Boolean isWatered, int height, int humidity) {
+        super(id, receivesSunlight, isWatered);
         this.height = height;
         this.humidity = humidity;
     }

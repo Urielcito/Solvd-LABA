@@ -1,7 +1,7 @@
 package MySQL;
 
-import Domain.Fish;
-import Service.IFish;
+import Domain.Country;
+import Service.ICountry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -9,12 +9,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FishDAO extends MySql implements IFish {
-    private static final Logger logger = LogManager.getLogger(FishDAO.class);
+public class CountryDAO extends MySql implements ICountry {
+    private static final Logger logger = LogManager.getLogger(CountryDAO.class);
 
     @Override
-    public void Create(Fish aFish) {
-        strSQL = "INSERT INTO fish(id, weight, eggsLayed) VALUES (" + aFish.getId() + ", " + aFish.getWeight() + ", " + aFish.getEggsLayed() + ");";
+    public void Create(Country country) {
+        strSQL = "INSERT INTO country(id, name) VALUES (" + country.getId() + ", '" + country.getName() + "');";
         try {
             update(strSQL);
         } catch (SQLException ex) {
@@ -23,13 +23,13 @@ public class FishDAO extends MySql implements IFish {
     }
 
     @Override
-    public Fish Read(int id) {
+    public Country Read(int id) {
         return null; // Implementation as needed
     }
 
     @Override
-    public void Update(Fish fish) {
-        strSQL = "UPDATE fish SET weight=" + fish.getWeight() + ", eggsLayed=" + fish.getEggsLayed() + " WHERE id=" + fish.getId() + ";";
+    public void Update(Country country) {
+        strSQL = "UPDATE country SET name='" + country.getName() + "' WHERE id=" + country.getId() + ";";
         try {
             update(strSQL);
         } catch (SQLException ex) {
@@ -39,7 +39,7 @@ public class FishDAO extends MySql implements IFish {
 
     @Override
     public boolean Delete(int id) {
-        strSQL = "DELETE FROM fish WHERE id=" + id + ";";
+        strSQL = "DELETE FROM country WHERE id=" + id + ";";
         boolean deleted = false;
         try {
             update(strSQL);
@@ -51,21 +51,20 @@ public class FishDAO extends MySql implements IFish {
     }
 
     @Override
-    public List<Fish> theFish() {
-        List<Fish> fishList = new ArrayList<>();
-        Fish fish = null;
-        this.select("SELECT * FROM fish");
+    public List<Country> Countries() {
+        List<Country> countryList = new ArrayList<>();
+        Country country = null;
+        this.select("SELECT * FROM country");
         try {
             while (rs.next()) {
-                fish = new Fish(rs.getInt("id"),
-                        rs.getDouble("weight"),
-                        rs.getInt("eggsLayed"));
-                fishList.add(fish);
+                country = new Country(rs.getInt("id"),
+                        rs.getString("name"));
+                countryList.add(country);
             }
             rs.close();
         } catch (SQLException ex) {
             logger.error("SQLException: " + ex.getMessage());
         }
-        return fishList;
+        return countryList;
     }
 }

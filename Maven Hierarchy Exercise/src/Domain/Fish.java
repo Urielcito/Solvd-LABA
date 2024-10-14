@@ -6,6 +6,8 @@ public class Fish extends Animal{
     double weight;
     int eggsLayed;
 
+
+
     @Override
     public int getId() {
         return id;
@@ -32,6 +34,12 @@ public class Fish extends Animal{
         this.eggsLayed = eggsLayed;
     }
 
+    public Fish(int id, double weight, int eggsLayed) {
+        super();
+        this.id = id;
+        this.weight = weight;
+        this.eggsLayed = eggsLayed;
+    }
     public Fish() {
         super();
         this.speciesName = "Domain.Fish";

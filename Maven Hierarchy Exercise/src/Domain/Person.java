@@ -10,6 +10,10 @@ import java.util.Scanner;
 final public class Person extends Human implements Reproducible {
     protected int id;
     final protected String name;
+    protected int identity;
+    protected int countryId;
+
+
 
     @Override
     public int getId() {
@@ -25,6 +29,31 @@ final public class Person extends Human implements Reproducible {
         return name;
     }
 
+    public int getIdentity() {
+        return identity;
+    }
+
+    public void setIdentity(int identity) {
+        this.identity = identity;
+    }
+
+
+
+    public int getCountryId() {
+        return countryId;
+    }
+
+    public void setCountryId(int countryId) {
+        this.countryId = countryId;
+    }
+
+    public Person(int id, String name, int identity, int countryId) { //MySQl CONSTRUCTOR
+        this.id = id;
+        this.name = name;
+        this.identity = identity;
+        this.countryId = countryId;
+    }
+
     public Person(){ //Empty constructor
         super();
         this.name = "N/A";
@@ -32,6 +61,8 @@ final public class Person extends Human implements Reproducible {
         this.ethnicity = "N/A";
         this.age = 0;
         this.intelligence = 0;
+        this.identity = 0;
+        this.countryId = 0;
     }
     public Person(String name){ //Generic constructor
         super();

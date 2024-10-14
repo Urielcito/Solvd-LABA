@@ -5,6 +5,7 @@ public class Plant extends Cell{
     protected Boolean receivesSunlight;
     protected Boolean isWatered;
 
+
     public int getId() {
         return id;
     }
@@ -32,8 +33,9 @@ public class Plant extends Cell{
     public Plant(){
         super();
     }
-    public Plant(Boolean receivesSunlight, Boolean isWatered) {
+    public Plant(int id, Boolean receivesSunlight, Boolean isWatered) {
         super();
+        this.id = id;
         this.receivesSunlight = receivesSunlight;
         this.isWatered = isWatered;
     }
