@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<the-fish>
+    <fish id="1">
+        <weight>2</weight>
+        <eggsLayed>300</eggsLayed>
+    </fish>
+</the-fish>

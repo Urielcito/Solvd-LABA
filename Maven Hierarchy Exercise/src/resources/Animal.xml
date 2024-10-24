@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<animals>
+    <animal id="1">
+        <speciesName>Dog</speciesName>
+        <hasFur>true</hasFur>
+        <type>Mammal</type>
+        <gender>Female</gender>
+        <ownerId>0</ownerId>
+    </animal>
+
+    <animal id="2">
+        <speciesName>Guinea Pig</speciesName>
+        <hasFur>false</hasFur>
+        <type>Aquatic</type>
+        <gender>Male</gender>
+        <ownerId>1</ownerId>
+    </animal>
+</animals>

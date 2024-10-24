@@ -299,6 +299,13 @@ public class Main {
             logger.info(e.getMessage());
         }
          */
+        String xmlFilePath = "src/resources/Animal.xml";
+        String xsdFilePath = "src/resources/Animal.xsd";
+
+        DOMParseAndValidate parser = new DOMParseAndValidate();
+        parser.parseXML(xmlFilePath);
+        parser.validateXMLWithXSD(xmlFilePath, xsdFilePath);
+
     }
 }
 
